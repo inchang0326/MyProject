@@ -76,6 +76,21 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+		<dependency>
+   			<groupId>cglib</groupId>
+   			<artifactId>cglib</artifactId>
+   			<version>2.2</version>
+  		</dependency>
 
 		<!-- Logging -->
 		<dependency>
@@ -178,9 +193,9 @@
 			<version>4.4.4</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.googlecode.json-simple</groupId>
-		    <artifactId>json-simple</artifactId>
-		    <version>1.1.1</version>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
 		</dependency>
 	</dependencies>
 
