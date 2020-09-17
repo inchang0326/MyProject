@@ -6,7 +6,7 @@
 <title>타행계좌 확인</title>
 </head>
 <body>
-	<form action='/transferauth' method='post'>
+	<form action='/transferauth.do' method='post'>
 		<div>
 			<select name="bkNm" id="selBk" style="width:200px; height:30px;">
 				<option value="" selected disabled hidden>은행 선택</option>

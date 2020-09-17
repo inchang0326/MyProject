@@ -18,6 +18,6 @@
    <br/>
 #2. 동시거래 검증을 위해 요청과 요청 사이 5초 제한을 두고 있습니다.
    <br/>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;따라서 빠르게 거래를 요청할 경우, 결과코드(0003), 결과메시지(Service Exception) 오류가 발생할 수 있습니다.
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;따라서 빠르게 거래를 요청할 경우, 결과코드(0007), 결과메시지(Concurrent Auth Caught) 예외가 발생할 수 있습니다.
 </body>
 </html>
