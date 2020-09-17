@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.nhis.webapp.common.DaoException;
-import com.nhis.webapp.common.ResultCode;
+import com.nhis.webapp.exception.DaoException;
+import com.nhis.webapp.common.EnumResultCode;
 
 @Repository
 public class LogDaoimpl implements LogDao {
@@ -20,14 +20,15 @@ public class LogDaoimpl implements LogDao {
 	private SqlSession sqlSession;
 	
 	@Override
-	public void logging(HashMap<String, Object> input) throws DaoException {
-		logger.info(this.getClass().getName().toString());
-
+	public int logging(HashMap<String, Object> input) throws DaoException {
+		logger.debug(this.getClass().getName().toString());
+		int ret = 0;
 		try {
-			sqlSession.insert("log.logging", input);			
+			ret = sqlSession.insert("log.logging", input);			
 		} catch(Exception e) {
 			logger.error(e.getMessage());
-			throw new DaoException(ResultCode.ERR_0004, ResultCode.ERR_0004_MSG);
+			throw new DaoException(EnumResultCode.E0004.toString(), EnumResultCode.E0004.getMsg());
 		}
+		return ret;
 	}
 }

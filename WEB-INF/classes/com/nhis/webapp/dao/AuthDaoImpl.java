@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.nhis.webapp.common.DaoException;
-import com.nhis.webapp.common.ResultCode;
+import com.nhis.webapp.exception.DaoException;
+import com.nhis.webapp.common.EnumResultCode;
 
 @Repository
 public class AuthDaoImpl implements AuthDao {
@@ -21,60 +21,66 @@ public class AuthDaoImpl implements AuthDao {
 
 	@Override
 	public String getLatestTransferAuthDate(String custId) throws DaoException {
-		logger.info(this.getClass().getName().toString());
+		logger.debug(this.getClass().getName().toString());
 		String date = "";
 		try {
 			date = sqlSession.selectOne("auth.getLatestTransferAuthDate", custId);			
 		} catch(Exception e) {
 			logger.error(e.getMessage());
-			throw new DaoException(ResultCode.ERR_0004, ResultCode.ERR_0004_MSG);
+			throw new DaoException(EnumResultCode.E0004.toString(), EnumResultCode.E0004.getMsg());
 		}	
 		return date;
 	}
 
 	@Override
-	public void readyForTransferAuth(String custId) throws DaoException {
-		logger.info(this.getClass().getName().toString());
+	public int readyForTransferAuth(String custId) throws DaoException {
+		logger.debug(this.getClass().getName().toString());
+		int ret = 0;
 		try {
-			sqlSession.update("auth.readyForTransferAuth", custId);			
+			ret = sqlSession.update("auth.readyForTransferAuth", custId);			
 		} catch(Exception e) {
 			logger.error(e.getMessage());
-			throw new DaoException(ResultCode.ERR_0004, ResultCode.ERR_0004_MSG);
+			throw new DaoException(EnumResultCode.E0004.toString(), EnumResultCode.E0004.getMsg());
 		}
+		return ret;
 	}
 
 	@Override
 	public String getSqnoOfApi() throws DaoException {
-		logger.info(this.getClass().getName().toString());
+		logger.debug(this.getClass().getName().toString());
 		String sqno = "";
 		try {
 			sqno = sqlSession.selectOne("auth.getSqnoOfApi");			
 		} catch(Exception e) {
 			logger.error(e.getMessage());
-			throw new DaoException(ResultCode.ERR_0004, ResultCode.ERR_0004_MSG);
+			throw new DaoException(EnumResultCode.E0004.toString(), EnumResultCode.E0004.getMsg());
 		}	
 		return sqno;
 	}
 
 	@Override
-	public void transferAuth(String custId) throws DaoException {
-		logger.info(this.getClass().getName().toString());
+	public int transferAuth(String custId) throws DaoException {
+		logger.debug(this.getClass().getName().toString());
+		int ret = 0;
 		try {
-			sqlSession.update("auth.transferAuth", custId);			
+			ret = sqlSession.update("auth.transferAuth", custId);			
 		} catch(Exception e) {
 			logger.error(e.getMessage());
-			throw new DaoException(ResultCode.ERR_0004, ResultCode.ERR_0004_MSG);
+			throw new DaoException(EnumResultCode.E0004.toString(), EnumResultCode.E0004.getMsg());
 		}
+		return ret;
 	}
 
 	@Override
-	public void storeRanWord(HashMap<String, Object> input) throws DaoException {
-		logger.info(this.getClass().getName().toString());
+	public int storeRanWord(HashMap<String, Object> input) throws DaoException {
+		logger.debug(this.getClass().getName().toString());
+		int ret = 0;
 		try {
-			sqlSession.update("auth.storeRanWord", input);			
+			ret = sqlSession.update("auth.storeRanWord", input);			
 		} catch(Exception e) {
 			logger.error(e.getMessage());
-			throw new DaoException(ResultCode.ERR_0004, ResultCode.ERR_0004_MSG);
+			throw new DaoException(EnumResultCode.E0004.toString(), EnumResultCode.E0004.getMsg());
 		}
+		return ret;
 	}
 }
